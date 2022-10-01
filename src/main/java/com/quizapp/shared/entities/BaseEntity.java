@@ -1,4 +1,4 @@
-package com.quizapp.shared.model.entities;
+package com.quizapp.shared.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
