@@ -1,9 +1,11 @@
-package com.quizapp.shared.model.entities;
+package com.quizapp.shared.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,11 +27,12 @@ public class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean enabled;
+    private boolean enabled = true;
 
-    private Date createAt;
+    @CreatedDate
+    private Date createdAt;
 
-    private Date updateAt;
-
+    @LastModifiedDate
+    private Date updatedAt;
 
 }
