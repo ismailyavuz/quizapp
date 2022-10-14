@@ -14,8 +14,9 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
             "left join user_question us on us.question_id = q.id " +
             "where q.enabled = true " +
             "and us.user_id = :userId " +
-            "and (us.createdAt <= current_date - '7 day'::interval and us.correct = false) " +
-            "and qt.id = questionTagId ", nativeQuery = true)
+            "and (us.createdAt <= current_date - '7 day'::interval or us.correct = false) " +
+            "and qt.id = questionTagId " +
+            "limit 1", nativeQuery = true)
     Question getQuestionByQuestionTag(@Param("userId") Long userId,
                                       @Param("questionTagId") Long questionTagId);
 
