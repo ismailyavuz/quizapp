@@ -8,7 +8,7 @@ create table users (
 
 create table question (
                           id serial primary key,
-                          langCode text not null,
+                          lang_code text not null,
                           question_text text not null,
                           created_at timestamp not null,
                           updated_at timestamp not null,
