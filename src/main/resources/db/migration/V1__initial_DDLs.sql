@@ -9,7 +9,7 @@ create table users (
 create table question (
                           id serial primary key,
                           langCode text not null,
-                          question text not null,
+                          question_text text not null,
                           created_at timestamp not null,
                           updated_at timestamp not null,
                           enabled boolean not null default true
@@ -46,6 +46,3 @@ create table question_question_tag (
                                        question_id integer not null references question(id),
                                        question_tag_id integer not null references question_tag(id)
 );
-
-
-select * from question q inner join choice c on q.id = c.question_id
