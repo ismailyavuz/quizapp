@@ -1,6 +1,5 @@
 package com.quizapp.question.controller;
 
-import com.quizapp.question.controller.endpoint.QuestionControllerEndpoint;
 import com.quizapp.question.model.response.QuestionResponse;
 import com.quizapp.question.service.QuestionService;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +14,9 @@ public class QuestionController {
 
     private final QuestionService questionService;
 
-    @GetMapping(value = QuestionControllerEndpoint.GET_QUESTION_BY_QUESTION_TAG_ID)
+    @GetMapping(value = "/question-tags/{questionTagId}/questions")
     public QuestionResponse getQuestionByQuestionTagId(@PathVariable Long questionTagId,
-                                                       @RequestHeader Long userId) {
-        return questionService.getQuestionByQuestionTagId(questionTagId, userId);
+                                                       @RequestHeader String identifier) {
+        return questionService.getQuestionByQuestionTagId(questionTagId, identifier);
     }
 }
