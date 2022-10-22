@@ -13,8 +13,16 @@ public class QuestionTagServiceImpl implements QuestionTagService {
     private final QuestionTagRepository questionTagRepository;
 
     @Override
-    public List<QuestionTagResponse> getQuestionTags() {
-        List<QuestionTag> questionTag = questionTagRepository.findAll();
-        return questionTag.stream().map(qt -> new QuestionTagResponse(qt.getId(), qt.getName())).collect(Collectors.toList());
+    public List<QuestionTagDto> getQuestionTags() {
+        List<QuestionTag> questionTags = questionTagRepository.findAll();
+        return questionTags.stream().map(qt -> new QuestionTagDto(qt.getId(), qt.getName())).collect(Collectors.toList());
+    }
+
+    @Override
+    public QuestionTagDto createQuestionTag(CreateQuestionTagRequest request) {
+        QuestionTag questionTag = new QuestionTag();
+        questionTag.setName(request.getName());
+        questionTag = questionTagRepository.save(questionTag);
+        return new QuestionTagDto(questionTag.getId(), questionTag.getName());
     }
 }

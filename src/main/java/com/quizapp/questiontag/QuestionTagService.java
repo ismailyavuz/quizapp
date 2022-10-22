@@ -3,5 +3,7 @@ package com.quizapp.questiontag;
 import java.util.List;
 
 public interface QuestionTagService {
-    List<QuestionTagResponse> getQuestionTags();
+    List<QuestionTagDto> getQuestionTags();
+
+    QuestionTagDto createQuestionTag(CreateQuestionTagRequest name);
 }
