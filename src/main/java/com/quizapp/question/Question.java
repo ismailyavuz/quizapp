@@ -1,5 +1,6 @@
 package com.quizapp.question;
 
+import com.quizapp.choice.Choice;
 import com.quizapp.questiontag.QuestionTag;
 import com.quizapp.shared.entities.BaseEntity;
 import com.quizapp.userquestion.UserQuestion;
@@ -24,5 +25,8 @@ public class Question extends BaseEntity {
 
     @OneToMany(mappedBy = "question")
     List<UserQuestion> users;
+
+    @OneToMany(mappedBy = "question")
+    List<Choice> choices;
 
 }
