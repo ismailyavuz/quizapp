@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("/users")
+@RestController
 @RequiredArgsConstructor
 
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping
+    @GetMapping("/users")
     public List<UserDto> getUsers(){
         return userService.getUsers();
     }
 
-    @PostMapping("/create")
+    @PostMapping("/user/create")
     public UserCreationDto createUser(@RequestBody CreateUserRequest userCreationDto){
         return userService.createUser(userCreationDto);
     }
