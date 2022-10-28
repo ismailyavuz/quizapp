@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class QuestionTagServiceImpl implements QuestionTagService {
+public class   QuestionTagServiceImpl implements QuestionTagService {
 
     private final QuestionTagRepository questionTagRepository;
 
