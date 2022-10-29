@@ -7,11 +7,11 @@ select 'Türkiye', now(), now();
 insert into question_tag(name, created_at, updated_at)
 select '2021', now(), now();
 
-insert into question (lang_code, question_text, created_at, updated_at)
-select 'TR', 'En iyi takım hangisi', now(), now();
+insert into question (lang_code, question_text, created_at, updated_at, question_tag_id)
+select 'TR', 'En iyi takım hangisi', now(), now(), 1;
 
-insert into question (lang_code, question_text, created_at, updated_at)
-select 'TR', 'Hem sütlü çikolata olup, Hem Türkiye forması giyen oyuncu kimdir', now(), now();
+insert into question (lang_code, question_text, created_at, updated_at, question_tag_id)
+select 'TR', 'Hem sütlü çikolata olup, Hem Türkiye forması giyen oyuncu kimdir', now(), now(), 3;
 
 insert into question_question_tag (question_id, question_tag_id)
 select (select id from question where question_text = 'En iyi takım hangisi'), (select id from question_tag where name = 'Brezilya');
