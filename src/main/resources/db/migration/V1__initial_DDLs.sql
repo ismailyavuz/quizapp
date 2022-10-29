@@ -28,6 +28,7 @@ create table choice(
                        choice_text text not null,
                        correct boolean,
                        question_id integer not null references question(id),
+                       question_tag_id integer not null references question_tag(id),
                        created_at timestamp not null,
                        updated_at timestamp not null,
                        enabled boolean not null default true
