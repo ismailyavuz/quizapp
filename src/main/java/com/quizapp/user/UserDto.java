@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class UserDto {
-    private String name;
     private Long id;
+    private String identifier;
     private boolean enabled;
 }

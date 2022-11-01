@@ -5,7 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
-public class CreateUserRequest {
+public class CreateUserResponse {
     private String identifier;
 }

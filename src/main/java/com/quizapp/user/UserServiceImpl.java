@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
@@ -16,17 +15,15 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<UserDto> getUsers(){
         List<User> users = userRepository.findAll();
-        return users.stream().map(u -> new UserDto(u.getIdentifier(), u.getId(), u.isEnabled())).collect(Collectors.toList());
+        return users.stream().map(u -> new UserDto(u.getId(), u.getIdentifier(), u.isEnabled())).collect(Collectors.toList());
     }
 
-
-
     @Override
-    public UserCreationDto createUser(CreateUserRequest request){
+    public UserCreationDto createUser(CreateUserResponse request){
         User user = new User();
         user.setIdentifier(request.getIdentifier());
         user = userRepository.save(user);
-        return new UserCreationDto(user.getIdentifier(), user.getId());
+        return new UserCreationDto(user.getId(), user.getIdentifier());
     }
 
 }
