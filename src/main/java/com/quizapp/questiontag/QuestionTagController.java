@@ -1,14 +1,12 @@
 package com.quizapp.questiontag;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/question-tags")
+@RestController
+@RequestMapping("/question-tags")
 @RequiredArgsConstructor
 public class QuestionTagController {
 
@@ -19,7 +17,7 @@ public class QuestionTagController {
         return questionTagService.getQuestionTags();
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public QuestionTagDto createQuestionTag(@RequestBody CreateQuestionTagRequest questionTagDto) {
         return questionTagService.createQuestionTag(questionTagDto);
     }
