@@ -6,4 +6,5 @@ public interface UserService {
 
     CreateUserRequest createUser(UserCreationDto identifier);
     List<UserDto> getUsers();
+
 }
