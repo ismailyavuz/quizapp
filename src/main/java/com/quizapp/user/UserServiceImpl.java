@@ -25,5 +25,4 @@ public class UserServiceImpl implements UserService{
         user = userRepository.save(user);
         return new CreateUserRequest(user.getId(),user.getIdentifier());
     }
-
 }
