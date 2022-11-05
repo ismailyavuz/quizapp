@@ -19,11 +19,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserCreationDto createUser(CreateUserResponse request){
+    public CreateUserRequest createUser(UserCreationDto request){
         User user = new User();
         user.setIdentifier(request.getIdentifier());
         user = userRepository.save(user);
-        return new UserCreationDto(user.getId(), user.getIdentifier());
+        return new CreateUserRequest(user.getId(),user.getIdentifier());
     }
 
 }

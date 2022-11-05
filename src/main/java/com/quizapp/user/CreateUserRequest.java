@@ -1,10 +1,13 @@
 package com.quizapp.user;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateUserResponse {
+@AllArgsConstructor
+public class CreateUserRequest {
+    private Long id;
     private String identifier;
 }

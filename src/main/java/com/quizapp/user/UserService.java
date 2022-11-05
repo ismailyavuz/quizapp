@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface UserService {
 
-    UserCreationDto createUser(CreateUserResponse identifier);
+    CreateUserRequest createUser(UserCreationDto identifier);
     List<UserDto> getUsers();
 }

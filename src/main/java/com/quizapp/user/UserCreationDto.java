@@ -6,8 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class UserCreationDto {
-    private Long id;
     private String identifier;
+
 }
