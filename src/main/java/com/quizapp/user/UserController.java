@@ -1,24 +1,23 @@
 package com.quizapp.user;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
-@RestController(value = "/users")
+@RestController
+@RequestMapping(value = "/users")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping()
+    @GetMapping
     public List<UserDto> getUsers() {
         return userService.getUsers();
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public UserCreationDto createUser(@RequestBody CreateUserResponse userCreationDto) {
         return userService.createUser(userCreationDto);
     }
