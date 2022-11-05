@@ -8,12 +8,12 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
     @Override
-    public List<UserDto> getUsers(){
+    public List<UserDto> getUsers() {
         List<User> users = userRepository.findAll();
         return users.stream().map(u -> new UserDto(u.getId(), u.getIdentifier(), u.isEnabled())).collect(Collectors.toList());
     }
