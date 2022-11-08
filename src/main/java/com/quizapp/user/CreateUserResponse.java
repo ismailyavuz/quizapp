@@ -6,7 +6,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserCreationDto {
+@AllArgsConstructor
+public class CreateUserResponse {
+    private Long id;
     private String identifier;
-
 }
