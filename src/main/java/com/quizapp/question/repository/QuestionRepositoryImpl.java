@@ -19,8 +19,8 @@ public class QuestionRepositoryImpl implements QuestionRepositoryCustom {
                 "join q.questionTags qt " +
                 "where q.enabled = true " +
                 "and qt.id = :questionTagId " +
-                "and q.id not in (select uq.questionId from UserQuestion uq " +
-                "and uq.user.identifier = :identifier " +
+                "and q.id not in (select uq.question.id from UserQuestion uq " +
+                "where uq.user.identifier = :identifier " +
                 "and (uq.createdAt <= :askAgainBeforeThisDate or uq.correct = false)) ";
         return em.createQuery(query, Question.class)
                 .setParameter("identifier", identifier)

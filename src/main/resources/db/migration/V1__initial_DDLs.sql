@@ -19,7 +19,7 @@ create table question (
 create table user_question(
                               user_id integer references users(id),
                               question_id integer references question(id),
-                              is_correct boolean,
+                              correct boolean,
                               created_at timestamp not null
 );
 
