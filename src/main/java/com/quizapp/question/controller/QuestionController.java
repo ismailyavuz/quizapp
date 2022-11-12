@@ -2,11 +2,9 @@ package com.quizapp.question.controller;
 
 import com.quizapp.question.model.response.QuestionResponse;
 import com.quizapp.question.service.QuestionService;
+import com.quizapp.shared.response.GenericResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,5 +16,12 @@ public class QuestionController {
     public QuestionResponse getQuestionByQuestionTagId(@PathVariable Long questionTagId,
                                                        @RequestHeader String identifier) {
         return questionService.getQuestionByQuestionTagId(questionTagId, identifier);
+    }
+
+    @PostMapping(value = "/questions/{questionId}/result/{isCorrect}")
+    public GenericResponse saveUserAnswerResult(@PathVariable Long questionId,
+                                                @PathVariable Boolean isCorrect,
+                                                @RequestHeader String identifier) {
+        return questionService.saveUserAnswerResult(questionId, isCorrect, identifier);
     }
 }

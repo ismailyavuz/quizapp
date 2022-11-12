@@ -19,6 +19,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByIdentifier(String identifier) {
+        return userRepository.findByIdentifier(identifier);
+    }
+
+    @Override
     public CreateUserResponse createUser(CreateUserRequest request) {
         User user = new User();
         user.setIdentifier(request.getIdentifier());

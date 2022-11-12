@@ -8,4 +8,5 @@ public interface UserService {
 
     List<UserDto> getUsers();
 
+    User findByIdentifier(String identifier);
 }
