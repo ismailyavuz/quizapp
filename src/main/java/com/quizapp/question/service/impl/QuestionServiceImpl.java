@@ -28,20 +28,22 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public GenericResponse createQuestion(CreateQuestionRequest request) {
         Question question = new Question();
+        question.setLangCode(request.getLangCode());
         question.setQuestionText(request.getQuestionText());
-        question.setChoices(prepareChoices(request.getChoices()));
         QuestionTag questionTag = questionTagRepository.getById(request.getQuestionTagId());
         question.setQuestionTags(Collections.singletonList(questionTag));
+        question.setChoices(prepareChoices(request.getChoices(), question));
         Long questionId = questionRepository.save(question).getId();
         return new GenericResponse("success", questionId);
     }
 
-    private List<Choice> prepareChoices(List<ChoiceDto> choiceRequestList) {
+    private List<Choice> prepareChoices(List<ChoiceDto> choiceRequestList, Question question) {
         List<Choice> choiceEntityList = new ArrayList<>();
         for (ChoiceDto choiceRequest: choiceRequestList){
             Choice choiceEntity = new Choice();
             choiceEntity.setChoiceText(choiceRequest.getChoiceText());
             choiceEntity.setCorrect(choiceRequest.isCorrect());
+            choiceEntity.setQuestion(question);
             choiceEntityList.add(choiceEntity);
         }
         return choiceEntityList;
