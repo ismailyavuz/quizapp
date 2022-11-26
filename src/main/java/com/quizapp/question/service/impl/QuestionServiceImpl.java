@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,20 +31,17 @@ public class QuestionServiceImpl implements QuestionService {
         question.setQuestionText(request.getQuestionText());
         QuestionTag questionTag = questionTagRepository.getById(request.getQuestionTagId());
         question.setQuestionTags(Collections.singletonList(questionTag));
-        question.setChoices(prepareChoices(request.getChoices(), question));
+        prepareChoices(request.getChoices(), question);
         Long questionId = questionRepository.save(question).getId();
         return new GenericResponse("success", questionId);
     }
 
-    private List<Choice> prepareChoices(List<ChoiceDto> choiceRequestList, Question question) {
-        List<Choice> choiceEntityList = new ArrayList<>();
+    private void prepareChoices(List<ChoiceDto> choiceRequestList, Question question) {
         for (ChoiceDto choiceRequest: choiceRequestList){
             Choice choiceEntity = new Choice();
             choiceEntity.setChoiceText(choiceRequest.getChoiceText());
             choiceEntity.setCorrect(choiceRequest.isCorrect());
-            choiceEntity.setQuestion(question);
-            choiceEntityList.add(choiceEntity);
+            question.addChoice(choiceEntity);
         }
-        return choiceEntityList;
     }
 }

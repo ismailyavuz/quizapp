@@ -6,10 +6,17 @@ import com.quizapp.questiontag.QuestionTag;
 import com.quizapp.shared.entities.BaseEntity;
 import com.quizapp.userquestion.UserQuestion;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -31,7 +38,12 @@ public class Question extends BaseEntity {
     List<UserQuestion> users;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    List<Choice> choices;
+    List<Choice> choices = new ArrayList<>();
+
+    public void addChoice(Choice choice) {
+        choice.setQuestion(this);
+        choices.add(choice);
+    }
 
 }
 
