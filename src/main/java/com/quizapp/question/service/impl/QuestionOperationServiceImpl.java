@@ -22,12 +22,12 @@ public class QuestionOperationServiceImpl implements QuestionOperationService {
     private final QuestionRepository questionRepository;
     private final UserService userService;
     private final UserQuestionRepository userQuestionRepository;
+    private final QuestionToQuestionResponseConverter questionToQuestionResponseConverter;
 
     @Override
     public QuestionResponse getQuestionByQuestionTagId(Long questionTagId, String identifier) {
         Question question = questionRepository.getNextQuestion(identifier, questionTagId, new Date());
-        QuestionToQuestionResponseConverter converter = new QuestionToQuestionResponseConverter();
-        return converter.convert(question);
+        return questionToQuestionResponseConverter.convert(question);
     }
 
     @Override
