@@ -2,11 +2,11 @@ package com.quizapp.choice;
 
 import com.quizapp.question.Question;
 import com.quizapp.shared.entities.BaseEntity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 @Getter
 @Setter
 @Entity

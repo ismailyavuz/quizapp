@@ -1,10 +1,9 @@
 package com.quizapp.questiontag;
 
 import com.quizapp.shared.entities.BaseEntity;
+import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.Entity;
 
 @Getter
 @Setter

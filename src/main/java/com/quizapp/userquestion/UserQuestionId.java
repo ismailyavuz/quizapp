@@ -1,8 +1,8 @@
 package com.quizapp.userquestion;
 
+import jakarta.persistence.Embeddable;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable

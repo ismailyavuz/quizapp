@@ -1,10 +1,10 @@
 package com.quizapp.question.repository;
 
 import com.quizapp.question.Question;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.Date;
 
 @Repository

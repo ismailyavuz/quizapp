@@ -2,12 +2,12 @@ package com.quizapp.user;
 
 import com.quizapp.shared.entities.BaseEntity;
 import com.quizapp.userquestion.UserQuestion;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import java.util.List;
 
 @Entity
