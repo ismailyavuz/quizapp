@@ -9,4 +9,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class GenericResponse implements Serializable {
     private String message;
+    private Long id;
+
+    public GenericResponse(String message) {
+        this.message = message;
+    }
 }
