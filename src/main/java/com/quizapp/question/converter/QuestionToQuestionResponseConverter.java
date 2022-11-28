@@ -3,7 +3,9 @@ package com.quizapp.question.converter;
 import com.quizapp.choice.model.dto.ChoiceDto;
 import com.quizapp.question.Question;
 import com.quizapp.question.model.response.QuestionResponse;
+import org.springframework.stereotype.Component;
 
+@Component
 public class QuestionToQuestionResponseConverter {
 
     public QuestionResponse convert(Question question) {
