@@ -36,6 +36,11 @@ public class QuestionServiceImpl implements QuestionService {
         return new GenericResponse("success", questionId);
     }
 
+    @Override
+    public Question findById(long id) {
+        return questionRepository.findById(id).orElse(null);
+    }
+
     private void prepareChoices(List<ChoiceDto> choiceRequestList, Question question) {
         for (ChoiceDto choiceRequest: choiceRequestList){
             Choice choiceEntity = new Choice();
